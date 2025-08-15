@@ -1,10 +1,10 @@
 {
-  "name": "My PWA",
-  "short_name": "PWA",
+  "name": "Моя Зайка",
+  "short_name": "Зайка",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#317EFB",
+  "background_color": "#fff0f5",
+  "theme_color": "#ff4d6d",
   "icons": [
     {
       "src": "icon-192.png",
@@ -18,3 +18,4 @@
     }
   ]
 }
+

@@ -1,23 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#317EFB" />
-  <title>My PWA</title>
+  <meta name="theme-color" content="#ff4d6d" />
+  <title>Моя Зайка</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
-      margin-top: 50px;
+      margin: 0;
+      background-color: #fff0f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #ff4d6d;
+      color: white;
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    button {
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff2d55;
+    }
+    #message {
+      font-size: 1.2rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 90%;
     }
   </style>
 </head>
 <body>
-  <h1>Hello, PWA on iPhone!</h1>
-  <p>Это минимальный PWA-проект для GitHub Pages.</p>
+  <header>💖 Моя Зайка 💖</header>
+  <main>
+    <button onclick="showMorning()">Утреннее пожелание</button>
+    <button onclick="showEvening()">Вечернее пожелание</button>
+    <div id="message">Нажми кнопку, чтобы получить пожелание 💌</div>
+  </main>
   <script>
+    const morningMessages = [
+      "Я тебя очень люблю, доброе утро, надеюсь тебя не украдут китайцы",
+      "Доброе утречко зайка, жаль что я не рядом",
+      "Ура! Утро, я уверен что сегодня день будет очень крутой, не забудь мне позвонить, люблю тебя",
+      "Доброе утро малыш, сегодня день будет очень крутой!",
+      "Доброе утро любимая, скучаю очень по тебе даже когда увижу тебя сегодня",
+      "Доброе утро зайка, я люблю тебя, и жду встречи"
+    ];
+
+    const eveningMessages = [
+      "Сладких снов зайка, если день был плохим не значит что завтра так же будет, как минимум наша встреча будет на один день ближе",
+      "Спокойной ночи зайка, люблю тебя и жду",
+      "Доброй ночи зайка, грустно что ты не рядом и тебя не обнять"
+    ];
+
+    function showMorning() {
+      const msg = morningMessages[Math.floor(Math.random() * morningMessages.length)];
+      document.getElementById('message').textContent = msg;
+    }
+
+    function showEvening() {
+      const msg = eveningMessages[Math.floor(Math.random() * eveningMessages.length)];
+      document.getElementById('message').textContent = msg;
+    }
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js')
         .catch(err => console.error('SW registration failed:', err));
