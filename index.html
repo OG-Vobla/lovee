@@ -52,12 +52,26 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       max-width: 90%;
     }
+    #random-photo {
+      border: 6px solid #ff2d55;
+      border-radius: 18px;
+      max-width: 350px;
+      max-height: 350px;
+      width: auto;
+      height: auto;
+      box-shadow: 0 4px 16px rgba(255,105,180,0.15);
+      background: #fff0f5;
+      margin: 20px auto;
+      display: block;
+    }
   </style>
 </head>
 <body>
   <header>💖 Моя Зайка 💖</header>
   <main>
+    <img id="random-photo" alt="Фотография нашей любви">
     <button onclick="showMorning()">Утреннее пожелание</button>
+    <button onclick="showDay()">Дневное пожелание</button>
     <button onclick="showEvening()">Вечернее пожелание</button>
     <div id="message">Нажми кнопку, чтобы получить пожелание 💌</div>
   </main>
@@ -112,6 +126,11 @@
 "Утречка, солнышко, я всегда жду твоего кружка",
 "Доброе утро, зайка, скоро расстояния не будут мешать нашим объятиям и поцелуям"
 
+];
+
+const dayMessages = [
+  "Ты моя главная любовь",
+  "Я тебя обожаю и очень хочу похадить с тобой держась за руку крепко крепко и не отпускать"
 ];
 
     const eveningMessages = [
@@ -218,16 +237,129 @@
   "Сладких снов, родная, я скучаю",
   "Доброй ночи, любимая, пусть сны будут светлыми"
 ];
-
+const photos = [
+  "photos/fxn 2025-05-06 165128.403.JPG",
+  "photos/fxn 2025-05-06 165136.881.JPG",
+  "photos/fxn 2025-05-06 165242.006.JPG",
+  "photos/IMG_0018.JPG",
+  "photos/IMG_0030.JPG",
+  "photos/IMG_0074.JPG",
+  "photos/IMG_0122.JPG",
+  "photos/IMG_0133.JPG",
+  "photos/IMG_0150.JPG",
+  "photos/IMG_0256.JPG",
+  "photos/IMG_0312.JPG",
+  "photos/IMG_0383.JPG",
+  "photos/IMG_0398.JPG",
+  "photos/IMG_0421.JPG",
+  "photos/IMG_0424.JPG",
+  "photos/IMG_0522.JPG",
+  "photos/IMG_0546.JPG",
+  "photos/IMG_0623.JPG",
+  "photos/IMG_0629.JPG",
+  "photos/IMG_0712.JPG",
+  "photos/IMG_0794.JPG",
+  "photos/IMG_0957.JPG",
+  "photos/IMG_1012.JPG",
+  "photos/IMG_1013.JPG",
+  "photos/IMG_1038.JPG",
+  "photos/IMG_1055.jpg",
+  "photos/IMG_1069.JPG",
+  "photos/IMG_1085.JPG",
+  "photos/IMG_1098.JPG",
+  "photos/IMG_1112.JPG",
+  "photos/IMG_1115-1.JPG",
+  "photos/IMG_1115.JPG",
+  "photos/IMG_1116.JPG",
+  "photos/IMG_1119.JPG",
+  "photos/IMG_1120.JPG",
+  "photos/IMG_1121.JPG",
+  "photos/IMG_1122.JPG",
+  "photos/IMG_1141.JPG",
+  "photos/IMG_1154.JPG",
+  "photos/IMG_1155.JPG",
+  "photos/IMG_1164.JPG",
+  "photos/IMG_1177.JPG",
+  "photos/IMG_1180.JPG",
+  "photos/IMG_1183.JPG",
+  "photos/IMG_1188.JPG",
+  "photos/IMG_1189.JPG",
+  "photos/IMG_1196.JPG",
+  "photos/IMG_1198.JPG",
+  "photos/IMG_1199.JPG",
+  "photos/IMG_1204.JPG",
+  "photos/IMG_1210.JPG",
+  "photos/IMG_1232.JPG",
+  "photos/IMG_1235.JPG",
+  "photos/IMG_1240.JPG",
+  "photos/IMG_1258.JPG",
+  "photos/IMG_1299.JPG",
+  "photos/IMG_1302.JPG",
+  "photos/IMG_1306.JPG",
+  "photos/IMG_1308.JPG",
+  "photos/IMG_1311.JPG",
+  "photos/IMG_1375.JPG",
+  "photos/IMG_1376.JPG",
+  "photos/IMG_1405.JPG",
+  "photos/IMG_1499.JPG",
+  "photos/IMG_1543.JPG",
+  "photos/IMG_1563.JPG",
+  "photos/IMG_1603.JPG",
+  "photos/IMG_1838.JPG",
+  "photos/IMG_1852.JPG",
+  "photos/IMG_1913.JPG",
+  "photos/IMG_1916.JPG",
+  "photos/IMG_1948.JPG",
+  "photos/IMG_1949.JPG",
+  "photos/IMG_1950.JPG",
+  "photos/IMG_1951.JPG",
+  "photos/IMG_1955.JPG",
+  "photos/IMG_1956.JPG",
+  "photos/IMG_1960.JPG",
+  "photos/IMG_2809.JPG",
+  "photos/IMG_2844.JPG",
+  "photos/IMG_3456.JPG",
+  "photos/IMG_3703.JPG",
+  "photos/IMG_3708.JPG",
+  "photos/IMG_3711.JPG",
+  "photos/IMG_3714.JPG",
+  "photos/IMG_3875.JPG",
+  "photos/IMG_3968.JPG",
+  "photos/IMG_3971.JPG",
+  "photos/IMG_3974.JPG",
+  "photos/IMG_4029.JPG",
+  "photos/IMG_4069.JPG",
+  "photos/IMG_4132.JPG",
+  "photos/IMG_4360.JPG",
+  "photos/IMG_4499.JPG",
+  "photos/IMG_6511.JPG",
+  "photos/IMG_6680.JPG",
+  "photos/IMG_7646.JPG",
+  "photos/IMG_7729.JPG",
+  "photos/IMG_8028.JPG"
+];
 
     function showMorning() {
       const msg = morningMessages[Math.floor(Math.random() * morningMessages.length)];
       document.getElementById('message').textContent = msg;
+      showRandomPhoto();
+    }
+
+    function showDay() {
+      const msg = dayMessages[Math.floor(Math.random() * dayMessages.length)];
+      document.getElementById('message').textContent = msg;
+      showRandomPhoto();
     }
 
     function showEvening() {
       const msg = eveningMessages[Math.floor(Math.random() * eveningMessages.length)];
       document.getElementById('message').textContent = msg;
+      showRandomPhoto();
+    }
+
+    function showRandomPhoto() {
+      const randomIndex = Math.floor(Math.random() * photos.length);
+      document.getElementById('random-photo').src = photos[randomIndex];
     }
 
     if ('serviceWorker' in navigator) {
@@ -236,4 +368,7 @@
     }
   </script>
 </body>
+<footer style="position: fixed; bottom: 0; width: 100%; text-align: center; background: #f8f8f8; padding: 10px;">
+  Сделано с ❤️ для моей зайки (ver 1.0)<br>
+</footer>
 </html>
